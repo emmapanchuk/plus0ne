@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:plus0ne/widgets/createEvent.dart';
-import 'package:plus0ne/widgets/homepage.dart';
+import 'package:plus0ne/widgets/themes.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: 'Navigation Basics',
+    theme: Themes.getThemeFromKey(ThemeKeys.DAY),
     home: CreateEvent(),
-    //home: HomePage(),
   ));
 }
