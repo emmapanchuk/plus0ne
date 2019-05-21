@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
-
-import 'package:plus0ne/widgets/chatBot.dart';
+import 'package:plus0ne/widgets/stateless/dynamicGraphic.dart';
+import 'package:plus0ne/widgets/stateless/dialogueBox.dart';
 
 class CreateEvent extends StatefulWidget{
     CreateEvent({Key key, this.title}) : super(key:key);
@@ -16,107 +16,60 @@ class CreateEventState extends State<CreateEvent> {
     Widget build(BuildContext context) {
         final String plus0neGraphics = "lib/resources/graphics/";
         final String plus0neIcons = "lib/resources/icons/";
-        final int hours = 12;
-        //final int hours = DateTime.now().hour;
-        if (hours >= 18 || hours <= 6) {
-            return new Scaffold(
-                appBar: new AppBar(
-                    leading: new IconButton(
-                        icon: new Image.asset(plus0neIcons + "plus0ne_Logo.png"),
-                        tooltip: 'Returns to the home menu',
-                        onPressed: null,
+        return Scaffold(
+            backgroundColor: Theme.of(context).backgroundColor,
+            body: Stack(
+                children: <Widget>[
+                    new ListView(
+                        children: <Widget>[
+                            DynamicGraphic(
+                                offset: 48.0,
+                            ),
+                            Container(
+                                child: Image.asset(
+                                    plus0neGraphics + "sunlightHorizon.png",
+                                ),
+                                color: Theme.of(context).primaryColor,
+                            ),
+                            Container(
+                                child: Container(
+                                    padding: EdgeInsets.all(10.0),
+                                    alignment: Alignment.topCenter,
+                                    color: new Color(0xFFF1F1F1),
+                                    child: Text("Good Afternoon!",
+                                        style: Theme.of(context).textTheme.title,
+                                    ),
+                                ),
+                            ),
+                            Container(
+                                child: new DialogueBox(
+                                    text: "Welcome! To get started creating an event, simply just text me a few details.",
+                                ),
+                                color: new Color(0xFFF1F1F1),
+                            ),
+                        ],
                     ),
-                    title: new Icon(FeatherIcons.sun, color: new Color(0xFF96C5E8)),
-                    backgroundColor: new Color(0xFF000A23).withOpacity(0.0),
-                    elevation: 0.0,
-                ),
-                body: new ListView(
-                    children: <Widget>[
-                        Container(
-                            child: Image.asset(plus0neGraphics + "moonlight.png"),
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    begin: FractionalOffset.topCenter,
-                                    end: FractionalOffset.bottomCenter,
-                                    colors: [const Color(0xFF000A23), const Color(0xFF181F4D)],
-                                ),
+                    new Positioned(
+                        top: 0.0,
+                        left: 0.0,
+                        right: 0.0,
+                        child: AppBar(
+                            leading: new IconButton(
+                                icon: new Image.asset(plus0neIcons + "plus0ne_Logo.png"),
+                                tooltip: 'Returns to the home menu',
+                                onPressed: null
                             ),
-                        ),
-                        Container(
-                            child: Image.asset(
-                                plus0neGraphics + "moonlightHorizon.png"),
-                            color: new Color(0xFF181F4D),
-                        )
-                    ],
-                ),
-                backgroundColor: new Color(0xFF000A23)
-            );
-        }
-        else {
-            return Scaffold(
-                backgroundColor: new Color(0xFF55CCFF),
-                body: Stack(
-                    children: <Widget>[
-                        new ListView(
-                            children: <Widget>[
-                                Container(
-                                    child: Image.asset(plus0neGraphics + "sunlight.png"),
-                                    margin: EdgeInsets.fromLTRB(0.0, 44.0, 0.0, 0.0),
-                                    decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                            begin: FractionalOffset.topCenter,
-                                            end: FractionalOffset.bottomCenter,
-                                            colors: [const Color(0xFF55CCFF), const Color(0xFFFFFFFF)],
-                                        ),
-                                    ),
-                                ),
-                                Container(
-                                    child: Image.asset(
-                                        plus0neGraphics + "sunlightHorizon.png"),
-                                    color: new Color(0xFFFFFFFF),
-                                ),
-                                Container(
-                                    child: Container(
-                                        padding: EdgeInsets.all(10.0),
-                                        alignment: Alignment.topCenter,
-                                        color: new Color(0xFFC0C0C0),
-                                        child: Text("Good Afternoon!",
-                                            style: new TextStyle(
-                                                fontSize: 36,
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                                Container(
-                                    child: Container(
-                                        color: new Color(0xFF66BB66),
-                                        margin: EdgeInsets.fromLTRB(42.0,73.0,21.0,0.0),
-                                        //decoration: BoxDecoration(
-                                        //borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                        //),
-                                        //padding: EdgeInsets.fromLTRB(42.0,73.0, 21.0, 0.0),
-                                    ),
-                                ),
-                            ],
-                        ),
-                        new Positioned(
-                            top: 0.0,
-                            left: 0.0,
-                            right: 0.0,
-                            child: AppBar(
-                                leading: new IconButton(
-                                    icon: new Image.asset(plus0neIcons + "plus0ne_Logo.png"),
-                                    tooltip: 'Returns to the home menu',
-                                    onPressed: null
-                                ),
-                                title: new Icon(FeatherIcons.moon, color: new Color(0xFFFFFFFF)),
-                                backgroundColor: new Color(0xFF55CCFF).withOpacity(0.0),
-                                elevation: 0.0,
+                            title: new Icon(
+                                FeatherIcons.moon,
+                                size: 2.0*Theme.of(context).primaryIconTheme.size,
+                                color: Theme.of(context).primaryIconTheme.color
                             ),
+                            backgroundColor: new Color(0xFF55CCFF).withOpacity(0.0),
+                            elevation: 0.0,
                         ),
-                    ],
-                ),
-            );
-        }
+                    ),
+                ],
+            ),
+        );
     }
 }
