@@ -10,37 +10,35 @@ class DialogueBox extends StatelessWidget{
     @override
     Widget build(BuildContext context) {
         return new Container(
-            margin: const EdgeInsets.symmetric(vertical: 10.0),
-            child: new Row(
+            margin: const EdgeInsets.symmetric(vertical: 15.0),
+            child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                    new Container(
-                        margin: const EdgeInsets.only(left: 20.0),
-                        child: new CircleAvatar(
-                            child: new Icon(FeatherIcons.userCheck,color: new Color(0xFFFFFFFF)),
-                            backgroundColor: new Color(0xFF55CCFF),
-                        ),
-                    ),
-                    new Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    Stack(
                         children: <Widget>[
-                            new Container(
-                                child: new Container(
-                                    margin: const EdgeInsets.only(top:10.0,left: 42.0),
-                                    decoration: BoxDecoration(
-
-                                    ),
-                                    child: new Text(
-                                        text,
-                                        style: new TextStyle(
-                                            color: new Color(0xFFFFFFFF),
-                                        ),
+                            Container(
+                                child: Text(
+                                    text,
+                                    style: new TextStyle(
+                                        color: new Color(0xFFFFFFFF),
+                                        fontSize: 12.0
                                     ),
                                 ),
                                 decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                     color: new Color(0xFF66BB66),
                                 ),
-                            )
+                                padding: EdgeInsets.fromLTRB(25.0, 10.0, 31.0, 12.0),
+                                margin: EdgeInsets.only(left: 42.0,right: 21.0, top: 10.0),
+                            ),
+                            Container(
+                                margin: const EdgeInsets.only(left: 20.0),
+                                child:CircleAvatar(
+                                    child: new Icon(FeatherIcons.userCheck,color: new Color(0xFFFFFFFF)),
+                                    backgroundColor: new Color(0xFF55CCFF),
+                                    radius: 22,
+                                ),
+                            ),
                         ],
                     ),
                 ],
